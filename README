@@ -1,0 +1,11 @@
+Database creato correttamente (MySQL)
+✅ Tabelle create correttamente (products, orders, order_items)
+✅ Connessione PHP ↔️ MySQL riuscita con PDO
+✅ Creazione di Modello e Controller per i prodotti
+✅ API RESTful perfettamente funzionante e testata con Postman
+
+Database MySQL creato e strutturato
+✅ Connessione database sicura con PDO
+✅ API RESTful CRUD completo (Create, Read, Update, Delete)
+✅ Test completo di tutte le API tramite Postman
+

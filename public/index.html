@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Sunnee</title>
+  <link rel="icon" href="img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">🌞 Sunnee Admin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#prodotti">Prodotti</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ordini">Ordini</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="#">Logout</a>
+          </li>
+        </ul>
+        <form class="d-flex ms-3" role="search">
+          <input type="text" id="searchInput" class="form-control" placeholder="Cerca prodotto...">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Introduzione -->
+  <section class="introduzione">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center"><strong>Da dove nasce l’idea:</strong></h2>
+          <p class="text-center">La fondatrice, surfista e amante del mare, ha assistito negli anni al crescente inquinamento delle acque. Nonostante la consapevolezza del problema, si è resa conto di continuare a utilizzare costumi che rilasciavano microplastiche nell’ambiente.
+            Per questo motivo ha deciso di creare un brand di costumi sostenibili, realizzati non solo per ridurre l’impatto ambientale, ma per trasformare un materiale inquinante in una risorsa riutilizzabile.
+          </p>
+        </div>
+        <div class="col-6 col-md-6">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <strong>Vision:</strong>
+                </button>
+              </h3>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Innovare il settore del beachwear sostenibile, utilizzando esclusivamente filati ricavati da plastica riciclata.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <strong>Mission:</strong>
+                </button>
+              </h3>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Costruire una filiera produttiva etica e rigenerativa, garantendo la sostenibilità in ogni fase della realizzazione dei costumi.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-6">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <strong>Le collezioni includono modelli per uomo e donna. Sono disponibili vari modelli, tra cui:</strong>
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Relax</strong>, per un utilizzo quotidiano e per chi cerca comfort al mare.</li>
+                    <li><strong>Active</strong>, per chi pratica sport acquatici.</li>
+                    <li><strong>Extreme</strong>, per atleti e professionisti del surf e del nuoto.</li>
+                    <li>Entro il prossimo anno, verrà lanciata anche una linea <strong>Kids</strong>, per offrire costumi sostenibili anche ai più piccoli.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Prodotti Section -->
+  <div id="prodotti" class="container py-5">
+    <h2 class="text-center mb-4">🩱 Prodotti</h2>
+    <div id="productsContainer" class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Prodotti caricati dinamicamente -->
+    </div>
+  </div>
+
+  <!-- Dashboard Section -->
+  <div id="dashboard" class="container py-5">
+    <h1 class="text-center mb-4">🌊 Dashboard Plastica Riciclata</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <label for="start_date" class="form-label">Data Inizio</label>
+        <input type="date" id="start_date" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="end_date" class="form-label">Data Fine</label>
+        <input type="date" id="end_date" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="product_id" class="form-label">ID Prodotto (facoltativo)</label>
+        <input type="number" id="product_id" class="form-control">
+      </div>
+    </div>
+
+    <button id="loadBtn" class="btn btn-primary w-100 mb-4">Carica Dati</button>
+
+    <div class="card shadow p-4 mb-5">
+      <h2 class="text-center">♻️ Kg di plastica riciclata:</h2>
+      <h3 id="kgResult" class="text-center display-4 text-success">0.00</h3>
+    </div>
+
+    <div class="animate__animated animate__slideInDown">
+      <div class="card shadow p-4">
+        <h2 class="text-center">📊 Andamento Raccolta</h2>
+        <canvas id="plasticChart" height="100"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ordini Section -->
+  <div id="ordini" class="container py-5">
+    <h2 class="text-center mb-4">🧾 Ordini</h2>
+    <div id="ordersContainer">
+      <!-- Ordini caricati dinamicamente -->
+    </div>
+  </div>
+
+  <!-- Modal Modifica Ordine -->
+  <div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="editOrderForm" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editOrderModalLabel">Modifica Ordine</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editOrderId">
+          <div class="mb-3">
+            <label for="editOrderDate" class="form-label">Data Ordine</label>
+            <input type="date" id="editOrderDate" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+          <button type="submit" class="btn btn-primary">Salva modifiche</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+   <!-- Footer -->
+   <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-2">© 2025 Sunnee dashboard - creata da Balia Katiuscia - Tutti i diritti riservati</p>
+      <a href="https://github.com/KateB-creator" target="_blank" class="text-white me-3 text-decoration-none">🌐 GitHub</a>
+      <a href="https://kateb-creator.github.io/il-mio-sito-web/" target="_blank" class="text-white text-decoration-none">💻 Sito Web</a>
+    </div>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
