@@ -1,5 +1,64 @@
-Database creato correttamente (MySQL)
-✅ Tabelle create correttamente (products, orders, order_items)
+# Sunnee Dashboard - PHP & MySQL
+
+Benvenuto nel progetto **Sunnee Dashboard**, una web app sviluppata con **PHP**, **MySQL**, **HTML**, **SCSS**, **Bootstrap** e **JavaScript**, progettata per supportare un brand di costumi sostenibili nella gestione di ordini, prodotti e impatto ambientale.
+
+---
+
+## 🌱 Descrizione
+Sunnee è un brand che trasforma plastica riciclata (reti da pesca, rifiuti marini) in costumi da bagno sostenibili. Questa dashboard permette di:
+
+- Gestire prodotti (nome, kg plastica riciclata)
+- Gestire ordini e quantità
+- Calcolare i kg totali di plastica riciclata
+- Filtrare per date e prodotto
+- Visualizzare il tutto in un grafico interattivo con **Chart.js**
+
+---
+
+## 🛠️ Stack Tecnologico
+- **Frontend**: HTML5, SCSS, Bootstrap, JavaScript
+- **Grafico**: Chart.js
+- **Backend**: PHP 8.x (OOP + REST API)
+- **Database**: MySQL (via PDO)
+- **Ambiente locale**: XAMPP
+
+---
+
+## Migration.sql 
+Contenuto completo del file migration.sql per creare lo schema del database sunnee_db in MySQL:
+-- Crea il database
+CREATE DATABASE IF NOT EXISTS sunnee_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE sunnee_db;
+
+-- Tabella prodotti
+CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    kg_recycled DECIMAL(5,2) NOT NULL,
+    image_url VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabella ordini
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabella prodotti in ogni ordine
+CREATE TABLE IF NOT EXISTS order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+
+Database creato  (MySQL)
+✅ Tabelle create  (products, orders, order_items)
 ✅ Connessione PHP ↔️ MySQL riuscita con PDO
 ✅ Creazione di Modello e Controller per i prodotti
 ✅ API RESTful perfettamente funzionante e testata con Postman
@@ -8,4 +67,55 @@ Database MySQL creato e strutturato
 ✅ Connessione database sicura con PDO
 ✅ API RESTful CRUD completo (Create, Read, Update, Delete)
 ✅ Test completo di tutte le API tramite Postman
+
+
+## 📂 Struttura del progetto
+
+```
+├── config/                # Connessione DB
+├── controllers/           # Controller per prodotti, ordini, dashboard
+├── models/                # Classi modello (Product, Order, OrderItem)
+├── public/                # Frontend (index.html, style.css, JS)
+├── routes/                # API routing
+├── migration.sql          # Script SQL per creare il DB
+├── index.php              # Entry point backend
+```
+
+---
+
+## 🚀 Come avviare il progetto (in locale)
+1. Clona il repository:
+```bash
+git clone https://github.com/KateB-creator/Progetto-php-mysql.git
+```
+2. Apri con XAMPP la cartella in `htdocs`:
+```
+C:/xampp/htdocs/sunnee-app
+```
+3. Avvia Apache e MySQL da XAMPP
+4. Importa `migration.sql` nel tuo database `sunnee_db`
+5. Accedi da browser:
+```
+http://localhost/sunnee-app/public/index.html
+```
+
+---
+
+## 🧪 Funzionalità implementate
+- [x] CRUD prodotti via API RESTful
+- [x] CRUD ordini e prodotti associati
+- [x] Calcolo kg riciclati con filtro per data e prodotto
+- [x] Dashboard visuale con Chart.js
+- [x] Ricerca prodotti in tempo reale
+- [x] Upload immagini prodotti
+- [x] Responsive + Navbar mobile-friendly
+
+---
+
+## 👩‍💻 Sviluppato da
+**Katiuscia Balia**  
+ GitHub: [KateB-creator](https://github.com/KateB-creator)
+
+
+
 
